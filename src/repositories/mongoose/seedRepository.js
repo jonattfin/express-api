@@ -24,7 +24,6 @@ export default class SeedRepository {
       // const topics = await createTopics();
       // const users = await createUsers(topics);
       // await createPosts(topics, users);
-      // await createMeasures('pm10');
 
       await createSensors();
       await createMeasures();
