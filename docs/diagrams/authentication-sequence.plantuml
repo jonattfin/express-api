@@ -1,0 +1,12 @@
+@startuml authentication-sequence
+autonumber
+
+actor Actor
+boundary Router
+
+Actor -> Router: authentication request
+Router -[#Green]> Actor: authentication response (with token)
+Actor -[#Green]> Router: other requests (with token) (EG: /posts)
+Router -[#Red]> Actor: authentication response (invalid user / passwd)
+
+@enduml

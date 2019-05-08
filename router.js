@@ -1,0 +1,37 @@
+import { Router } from 'express';
+import { serve, setup } from 'swagger-ui-express';
+import yamljs from 'yamljs';
+import passport from 'passport';
+
+import {
+  postRouter,
+  topicRouter,
+  userRouter,
+  actionsRouter,
+  pulseRouter,
+} from './src/controllers';
+
+const router = Router();
+
+if (process.env.NODE_ENV !== 'test') {
+  // setup the swagger documentation
+  router.use('/explorer', serve, setup(yamljs.load('./swagger.yaml')));
+}
+
+const endpointsWithHandlers = [
+  { endpoint: 'post', handler: postRouter },
+  { endpoint: 'topic', handler: topicRouter },
+  { endpoint: 'user', handler: userRouter },
+  { endpoint: 'actions', handler: actionsRouter },
+  { endpoint: 'pulse', handler: pulseRouter },
+];
+
+endpointsWithHandlers.forEach(({ endpoint, handler }) => {
+  if (!['actions', 'pulse'].includes(endpoint)) {
+    router.use(`/${endpoint}`, passport.authenticate('jwt', { session: false }), handler);
+  } else {
+    router.use(`/${endpoint}`, handler);
+  }
+});
+
+export default router;

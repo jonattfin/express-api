@@ -1,0 +1,583 @@
+openapi: 3.0.0
+info:
+  description: >-
+    This is a sample Express-Slingshot server. You can find out more about Swagger at
+    [http://swagger.io](http://swagger.io) or on [irc.freenode.net,
+    #swagger](http://swagger.io/irc/).
+  version: 1.0.0
+  title: Swagger Express-Slingshot
+  termsOfService: 'http://swagger.io/terms/'
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+tags:
+  - name: actions
+    description: Operations you can do without being logged in.
+  - name: post
+    description: Operations about posts.
+  - name: user
+    description: Operations about users.
+  - name: topic
+    description: Operations about topics.
+paths:
+  /post:
+    get:
+      security:
+      - bearerAuth: []
+      tags:
+        - post
+      summary: Find all posts
+      description: Returns all posts
+      operationId: getPosts
+      parameters:
+        - name: limit
+          in: query
+          description: Number of posts to return per page.
+          required: false
+          schema:
+            type: int32
+            default: 10
+        - name: skip
+          in: query
+          description: How many posts to skip.
+          required: false
+          schema:
+            type: int32
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PostResponse'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PostResponse'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    post:
+      security:
+      - bearerAuth: []
+      tags:
+        - post
+      summary: Create a new post
+      description: ''
+      operationId: createPost
+      responses:
+        '201':
+          description: Item created
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          description: Validation exception
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Post'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Post'
+        description: Post object that needs to be added to the store
+        required: true
+  '/post/{id}':
+    get:
+      security:
+      - bearerAuth: []
+      tags:
+        - post
+      summary: Find post by id
+      description: Returns a single post
+      operationId: getPostById
+      parameters:
+        - name: id
+          in: path
+          description: ID of post to return
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/PostResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostResponse'
+        '400':
+          description: Invalid ID supplied
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: Post not found
+    put:
+      security:
+      - bearerAuth: []
+      tags:
+        - post
+      summary: Update an existing post
+      description: ''
+      operationId: updateById
+      parameters:
+        - name: id
+          in: path
+          description: ID of post to update
+          required: true
+          schema:
+            type: string
+      responses:
+        '400':
+          description: Invalid ID supplied
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: Post not found
+        '422':
+          description: Validation exception
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Post'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Post'
+        description: Post object that needs to be updated
+        required: true
+    delete:
+      security:
+      - bearerAuth: []
+      tags:
+        - post
+      summary: Deletes an post
+      description: ''
+      operationId: deletePost
+      parameters:
+        - name: id
+          in: path
+          description: Post id to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        '400':
+          description: Invalid ID supplied
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: Post not found
+  /topic:
+    get:
+      security:
+      - bearerAuth: []
+      tags:
+        - topic
+      summary: Find all topics
+      description: Returns all topics
+      operationId: getTopics
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Topic'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Topic'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+    post:
+      security:
+      - bearerAuth: []
+      tags:
+        - topic
+      summary: Create a new topic
+      description: ''
+      operationId: createTopic
+      responses:
+        '201':
+          description: Item created
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          description: Validation exception
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Topic'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Topic'
+        description: Topic object that needs to be added to the store
+        required: true
+  '/topic/{id}':
+    get:
+      security:
+      - bearerAuth: []
+      tags:
+        - topic
+      summary: Find topic by id
+      description: Returns a single topic
+      operationId: getTopicById
+      parameters:
+        - name: id
+          in: path
+          description: ID of topic to return
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Topic'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Topic'
+        '400':
+          description: Invalid ID supplied
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: Topic not found
+  /user:
+    get:
+      security:
+      - bearerAuth: []
+      tags:
+        - user
+      summary: Find all users
+      description: Returns all users
+      operationId: getUsers
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /actions/login:
+    post:
+      tags:
+        - actions
+      summary: Get the token that will be used by the user to log in into the system
+      description: ''
+      operationId: login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserLogin'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/UserLogin'
+        description: Login data
+        required: true
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string
+        '400':
+          description: Invalid username/password supplied
+  /actions/seed:
+    put:
+      tags:
+        - actions
+      summary: Seeds the DB (delete everything & create new items)
+      description: Be aware that everything existing will be deleted
+      operationId: populate
+      responses:
+        '201':
+          description: All items were inserted into DB
+        '422':
+          description: Validation exception
+  /actions/signUp:
+    post:
+      tags:
+        - actions
+      summary: Create user
+      description: This can only be done by the non logged in user.
+      operationId: createUser
+      responses:
+        '201':
+          description: Item created
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          description: Invalid input
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        description: Created user object
+        required: true
+  '/user/{id}':
+    get:
+      security:
+      - bearerAuth: []
+      tags:
+        - user
+      summary: Get user by id
+      description: ''
+      operationId: getUserById
+      parameters:
+        - name: id
+          in: path
+          description: The id of the user that needs to be fetched.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/User'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Invalid id supplied
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: User not found
+    put:
+      security:
+      - bearerAuth: []
+      tags:
+        - user
+      summary: Update an existing user
+      description: ''
+      operationId: updateById
+      parameters:
+        - name: id
+          in: path
+          description: ID of user to update
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/User'
+        description: User object that needs to be updated
+        required: true
+      responses:
+        '400':
+          description: Invalid ID supplied
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: User not found
+        '422':
+          description: Validation exception
+    delete:
+      security:
+      - bearerAuth: []
+      tags:
+        - user
+      summary: Delete user
+      description: This can only be done by the logged in user.
+      operationId: deleteUser
+      parameters:
+        - name: id
+          in: path
+          description: The id that needs to be deleted
+          required: true
+          schema:
+            type: string
+      responses:
+        '400':
+          description: Invalid id supplied
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: User not found
+  /user/loggedin:
+    get:
+      security:
+      - bearerAuth: []
+      tags:
+        - user
+      summary: Get logged in user.
+      description: ''
+      operationId: getLoggedInUser
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/User'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /user/logout:
+    post:
+      security:
+      - bearerAuth: []
+      tags:
+        - user
+      summary: Logout the user from the system / Invalidate the token for the user.
+      description: ''
+      operationId: logout
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/xml:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string
+externalDocs:
+  description: Find out more about Swagger
+  url: 'http://swagger.io'
+servers:
+  - url: 'http://localhost:8080/api/v1'
+  - url: 'https://localhost:8080/api/v1'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  responses:
+    UnauthorizedError:
+      description: Access token is missing or invalid
+  schemas:
+    Post:
+      type: object
+      required:
+        - title
+        - description
+      properties:
+        title:
+          type: string
+          example: my post
+        description:
+          type: string
+          example: description
+        location:
+          type: string
+          example: location
+        archived:
+          type: boolean
+          default: false
+        topics:
+          type: array
+          items:
+            type: string
+          example:
+            - 5bdbfd652c76cb0f58d8b1c4
+      xml:
+        name: Post
+    PostResponse:
+      type: object
+      xml:
+        name: PostResponse
+    Topic:
+      type: object
+      required:
+        - name
+        - description
+        - order
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        order:
+          type: integer
+          format: int32
+      xml:
+        name: Topic
+    User:
+      type: object
+      required:
+        - username
+        - firstName
+        - lastName
+        - email
+        - password
+        - phone
+      properties:
+        username:
+          type: string
+          example: "joe_doe"
+        firstName:
+          type: string
+          example: "Joe"
+        lastName:
+          type: string
+          example: "Doe"
+        email:
+          type: string
+          example: "joe_doe@mail.com"
+        password:
+          type: string
+          example: "joe_doe_secret_pwd"
+        phone:
+          type: string
+          example: "0746161315"
+        subscribedTopics:
+          type: array
+          items:
+            type: string
+          example:
+            - 5bdbfd652c76cb0f58d8b1c4
+      xml:
+        name: User
+    UserLogin:
+      type: object
+      required:
+        - username
+        - password
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+      xml:
+        name: UserLogin

@@ -1,0 +1,19 @@
+@startuml architecture
+autonumber
+
+actor Actor
+boundary Routers
+boundary Controllers
+boundary Repositories
+database Database
+
+Actor -> Routers
+Routers -> Controllers
+Controllers -> Repositories
+Repositories -> Database
+Database -> Repositories
+Repositories -> Controllers
+Controllers -> Routers
+Routers -> Actor
+
+@enduml

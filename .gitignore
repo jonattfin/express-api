@@ -1,0 +1,17 @@
+# dependencies
+/node_modules
+
+# coverage dir
+/coverage
+
+npm-debug.log
+
+# logs
+/logs
+
+# sonar qube work
+.scannerwork
+.sonarlint
+
+# plantuml folders
+/out
