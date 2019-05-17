@@ -1,3 +1,4 @@
 module.exports = {
-  'mongo:url': process.env.MONGODB_URI
+  'mongo:url': process.env.MONGODB_URI,
+  useMock: true,
 };

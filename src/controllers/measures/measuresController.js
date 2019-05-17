@@ -9,9 +9,16 @@ export default class MeasureController {
 
   async getLastDay(req, res, next) {
     try {
-      const options = getQueryOptions(req);
+      const measures = await this.repos.apiRepository.getLastDay();
+      res.json({ measures });
+    } catch (error) {
+      next(error);
+    }
+  }
 
-      const measures = await this.repos.apiRepository.getAllMeasures({ options });
+  async getLastWeek(req, res, next) {
+    try {
+      const measures = await this.repos.apiRepository.getLastWeek();
       res.json({ measures });
     } catch (error) {
       next(error);
@@ -20,9 +27,7 @@ export default class MeasureController {
 
   async getLastMonth(req, res, next) {
     try {
-      const options = getQueryOptions(req);
-
-      const measures = await this.repos.apiRepository.getAllMeasures({ options });
+      const measures = await this.repos.apiRepository.getLastMonth();
       res.json({ measures });
     } catch (error) {
       next(error);
@@ -30,27 +35,27 @@ export default class MeasureController {
   }
 }
 
-function getQueryOptions(req) {
-  const {
-    limit = 1000,
-    skip = 0,
-  } = req.query || {};
+// function getQueryOptions(req) {
+//   const {
+//     limit = 1000,
+//     skip = 0,
+//   } = req.query || {};
 
-  const sortBy = { key: 'stamp', value: 'desc' };
+//   const sortBy = { key: 'stamp', value: 'desc' };
 
-  return {
-    limit: tryParse(limit), skip: tryParse(skip), sortBy,
-  };
-}
+//   return {
+//     limit: tryParse(limit), skip: tryParse(skip), sortBy,
+//   };
+// }
 
-function tryParse(s) {
-  let i;
+// function tryParse(s) {
+//   let i;
 
-  try {
-    i = parseInt(s, 10);
-  } catch (error) {
-    // ignore
-  }
+//   try {
+//     i = parseInt(s, 10);
+//   } catch (error) {
+//     // ignore
+//   }
 
-  return i;
-}
+//   return i;
+// }

@@ -17,6 +17,9 @@ const controller = new MeasuresController({
 router.route('/data1day')
   .get((req, res, next) => controller.getLastDay(req, res, next));
 
+router.route('/data1week')
+  .get((req, res, next) => controller.getLastWeek(req, res, next));
+
 router.route('/data1month')
   .get((req, res, next) => controller.getLastMonth(req, res, next));
 

@@ -15,12 +15,13 @@ const setConfig = (config = {}) => {
 };
 
 class RestHelper {
-  constructor(instance) {
+  constructor(instance, extraConfig = {}) {
     this.instance = instance;
+    this.extraConfig = extraConfig;
   }
 
   async get(url, config = {}) {
-    const response = await this.instance.get(url, setConfig(config));
+    const response = await this.instance.get(url, setConfig({ ...config, ...this.extraConfig }));
     return response.data;
   }
 
@@ -62,12 +63,23 @@ function getInstance(type) {
       throw new Error(`The instance of type ${type} is not supported!`);
   }
 
+  const maxContentLength = 1024 * 1024; // 1MB
+
   return axios.create({
     baseURL: url,
     timeout: 5 * 1000,
     headers,
+    maxContentLength,
   });
 }
 
 export const UradService = new RestHelper(getInstance('urad'));
-export const PulseService = new RestHelper(getInstance('pulse'));
+
+const extraConfig = {
+  auth: {
+    username: '',
+    password: '',
+  },
+};
+
+export const PulseService = new RestHelper(getInstance('pulse'), extraConfig);

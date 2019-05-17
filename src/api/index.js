@@ -2,17 +2,25 @@
 import MockApi from './mockApi';
 import RealApi from './realApi';
 
+import configuration from '../configuration';
+
 class Api {
   constructor(inner) {
     this.inner = inner;
   }
 
-  fetchMeasures() {
-    return this.inner.fetchMeasures();
+  getLastDay() {
+    return this.inner.getLastDay();
+  }
+
+  getLastWeek() {
+    return this.inner.getLastWeek();
+  }
+
+  getLastMonth() {
+    return this.inner.getLastMonth();
   }
 }
 
-const isMock = false;
-const inner = isMock ? MockApi : RealApi;
-
+const inner = configuration.get('useMock') ? MockApi : RealApi;
 export default new Api(inner);

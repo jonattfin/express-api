@@ -1,7 +1,15 @@
 import api from '../api';
 
 export default class ApiRepository {
-  static getAllMeasures() {
-    return api.fetchMeasures();
+  static getLastDay() {
+    return api.getLastDay();
+  }
+
+  static getLastWeek() {
+    return api.getLastWeek();
+  }
+
+  static getLastMonth() {
+    return api.getLastMonth();
   }
 }
