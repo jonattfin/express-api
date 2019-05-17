@@ -8,7 +8,7 @@ import {
   topicRouter,
   userRouter,
   actionsRouter,
-  pulseRouter,
+  measureRouter,
 } from './src/controllers';
 
 const router = Router();
@@ -23,11 +23,11 @@ const endpointsWithHandlers = [
   { endpoint: 'topic', handler: topicRouter },
   { endpoint: 'user', handler: userRouter },
   { endpoint: 'actions', handler: actionsRouter },
-  { endpoint: 'pulse', handler: pulseRouter },
+  { endpoint: 'measures', handler: measureRouter },
 ];
 
 endpointsWithHandlers.forEach(({ endpoint, handler }) => {
-  if (!['actions', 'pulse'].includes(endpoint)) {
+  if (!['actions', 'measures'].includes(endpoint)) {
     router.use(`/${endpoint}`, passport.authenticate('jwt', { session: false }), handler);
   } else {
     router.use(`/${endpoint}`, handler);

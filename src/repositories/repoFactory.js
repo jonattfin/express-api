@@ -5,8 +5,9 @@ import {
   TopicRepository,
   UserRepository,
   SeedRepository,
-  MeasureRepository,
 } from './mongoose';
+
+import ApiRepository from './apiRepository';
 
 class RepoFactory {
   static getRepositories(type) {
@@ -18,7 +19,7 @@ class RepoFactory {
         userRepository: UserRepository,
         topicRepository: TopicRepository,
         seedRepository: SeedRepository,
-        measureRepository: MeasureRepository,
+        apiRepository: ApiRepository,
       };
     }
 

@@ -15,8 +15,10 @@
   "author": "jonattfin@gmail.com",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-cli": "^6.26.0",
     "babel-jest": "^23.6.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "bcrypt": "^3.0.2",
     "body-parser": "^1.18.3",
@@ -31,6 +33,7 @@
     "helmet": "^3.13.0",
     "jsonwebtoken": "^8.3.0",
     "lodash": "^4.17.11",
+    "moment": "^2.24.0",
     "mongoose": "^5.3.8",
     "morgan": "^1.9.1",
     "nconf": "^0.10.0",
@@ -43,8 +46,7 @@
     "uuid": "^3.3.2",
     "validator": "^10.9.0",
     "winston": "^3.1.0",
-    "yamljs": "^0.3.0",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0"
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "eslint": "^4.19.1",

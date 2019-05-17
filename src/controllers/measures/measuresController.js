@@ -7,21 +7,23 @@ export default class MeasureController {
     this.autoMapper = autoMapper;
   }
 
-  async getAllMeasures(req, res, next) {
+  async getLastDay(req, res, next) {
     try {
       const options = getQueryOptions(req);
 
-      const measures = await this.repos.measureRepository.getAllMeasures({ options });
+      const measures = await this.repos.apiRepository.getAllMeasures({ options });
       res.json({ measures });
     } catch (error) {
       next(error);
     }
   }
 
-  async getAllSensors(req, res, next) {
+  async getLastMonth(req, res, next) {
     try {
-      const sensors = await this.repos.measureRepository.getAllSensors();
-      res.json({ sensors });
+      const options = getQueryOptions(req);
+
+      const measures = await this.repos.apiRepository.getAllMeasures({ options });
+      res.json({ measures });
     } catch (error) {
       next(error);
     }
