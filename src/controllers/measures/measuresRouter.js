@@ -14,13 +14,13 @@ const controller = new MeasuresController({
 
 // routes
 
-router.route('/data1day')
+router.route('/last-day')
   .get((req, res, next) => controller.getLastDay(req, res, next));
 
-router.route('/data1week')
+router.route('/last-week')
   .get((req, res, next) => controller.getLastWeek(req, res, next));
 
-router.route('/data1month')
+router.route('/last-month')
   .get((req, res, next) => controller.getLastMonth(req, res, next));
 
 export default router;

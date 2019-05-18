@@ -14,7 +14,7 @@ export default class MockApi {
   }
 
   static async getLastWeek() {
-    const data = [[], PulseDataWeek];
+    const data = [UradDataDay, PulseDataWeek];
     return applyTransformations(data);
   }
 

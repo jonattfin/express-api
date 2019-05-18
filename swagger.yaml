@@ -15,36 +15,19 @@ info:
 tags:
   - name: actions
     description: Operations you can do without being logged in.
-  - name: post
-    description: Operations about posts.
+  - name: measure
+    description: Operations about measures.
   - name: user
     description: Operations about users.
-  - name: topic
-    description: Operations about topics.
 paths:
-  /post:
+  /measures/last-day:
     get:
       security:
       - bearerAuth: []
       tags:
-        - post
-      summary: Find all posts
-      description: Returns all posts
-      operationId: getPosts
-      parameters:
-        - name: limit
-          in: query
-          description: Number of posts to return per page.
-          required: false
-          schema:
-            type: int32
-            default: 10
-        - name: skip
-          in: query
-          description: How many posts to skip.
-          required: false
-          schema:
-            type: int32
+        - measure
+      summary: Get all the measures for the last day
+      operationId: getLastDay
       responses:
         '200':
           description: successful operation
@@ -53,136 +36,22 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/PostResponse'
+                  $ref: '#/components/schemas/Measure'
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/PostResponse'
+                  $ref: '#/components/schemas/Measure'
         '401':
           $ref: '#/components/responses/UnauthorizedError'
-    post:
-      security:
-      - bearerAuth: []
-      tags:
-        - post
-      summary: Create a new post
-      description: ''
-      operationId: createPost
-      responses:
-        '201':
-          description: Item created
-        '401':
-          $ref: '#/components/responses/UnauthorizedError'
-        '422':
-          description: Validation exception
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Post'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/Post'
-        description: Post object that needs to be added to the store
-        required: true
-  '/post/{id}':
+  /measures/last-week:
     get:
       security:
       - bearerAuth: []
       tags:
-        - post
-      summary: Find post by id
-      description: Returns a single post
-      operationId: getPostById
-      parameters:
-        - name: id
-          in: path
-          description: ID of post to return
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/PostResponse'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PostResponse'
-        '400':
-          description: Invalid ID supplied
-        '401':
-          $ref: '#/components/responses/UnauthorizedError'
-        '404':
-          description: Post not found
-    put:
-      security:
-      - bearerAuth: []
-      tags:
-        - post
-      summary: Update an existing post
-      description: ''
-      operationId: updateById
-      parameters:
-        - name: id
-          in: path
-          description: ID of post to update
-          required: true
-          schema:
-            type: string
-      responses:
-        '400':
-          description: Invalid ID supplied
-        '401':
-          $ref: '#/components/responses/UnauthorizedError'
-        '404':
-          description: Post not found
-        '422':
-          description: Validation exception
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Post'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/Post'
-        description: Post object that needs to be updated
-        required: true
-    delete:
-      security:
-      - bearerAuth: []
-      tags:
-        - post
-      summary: Deletes an post
-      description: ''
-      operationId: deletePost
-      parameters:
-        - name: id
-          in: path
-          description: Post id to delete
-          required: true
-          schema:
-            type: string
-      responses:
-        '400':
-          description: Invalid ID supplied
-        '401':
-          $ref: '#/components/responses/UnauthorizedError'
-        '404':
-          description: Post not found
-  /topic:
-    get:
-      security:
-      - bearerAuth: []
-      tags:
-        - topic
-      summary: Find all topics
-      description: Returns all topics
-      operationId: getTopics
+        - measure
+      summary: Get all the measures for the last week
+      operationId: getLastDay
       responses:
         '200':
           description: successful operation
@@ -191,71 +60,38 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Topic'
+                  $ref: '#/components/schemas/Measure'
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Topic'
+                  $ref: '#/components/schemas/Measure'
         '401':
           $ref: '#/components/responses/UnauthorizedError'
-    post:
-      security:
-      - bearerAuth: []
-      tags:
-        - topic
-      summary: Create a new topic
-      description: ''
-      operationId: createTopic
-      responses:
-        '201':
-          description: Item created
-        '401':
-          $ref: '#/components/responses/UnauthorizedError'
-        '422':
-          description: Validation exception
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Topic'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/Topic'
-        description: Topic object that needs to be added to the store
-        required: true
-  '/topic/{id}':
+  /measures/last-month:
     get:
       security:
       - bearerAuth: []
       tags:
-        - topic
-      summary: Find topic by id
-      description: Returns a single topic
-      operationId: getTopicById
-      parameters:
-        - name: id
-          in: path
-          description: ID of topic to return
-          required: true
-          schema:
-            type: string
+        - measure
+      summary: Get all the measures for the last week
+      operationId: getLastDay
       responses:
         '200':
           description: successful operation
           content:
             application/xml:
               schema:
-                $ref: '#/components/schemas/Topic'
+                type: array
+                items:
+                  $ref: '#/components/schemas/Measure'
             application/json:
               schema:
-                $ref: '#/components/schemas/Topic'
-        '400':
-          description: Invalid ID supplied
+                type: array
+                items:
+                  $ref: '#/components/schemas/Measure'
         '401':
           $ref: '#/components/responses/UnauthorizedError'
-        '404':
-          description: Topic not found
   /user:
     get:
       security:
@@ -487,52 +323,52 @@ components:
     UnauthorizedError:
       description: Access token is missing or invalid
   schemas:
-    Post:
+    Measure:
       type: object
       required:
-        - title
-        - description
+        - source
+        - type
+        - country
+        - day
+        - sensorId
       properties:
-        title:
+        source:
           type: string
-          example: my post
-        description:
+        city:
           type: string
-          example: description
-        location:
+        country:
           type: string
-          example: location
-        archived:
-          type: boolean
-          default: false
-        topics:
-          type: array
-          items:
-            type: string
-          example:
-            - 5bdbfd652c76cb0f58d8b1c4
+        day:
+          type: string
+        sensorId:
+          type: string
+        position:
+          $ref: "#/components/schemas/Position"
+        pm10:
+          type: "integer"
+          format: "int64"
+        pm25:
+          type: "integer"
+          format: "int64"
+        temperature:
+          type: "integer"
+          format: "int64"
+        humidity:
+          type: "integer"
+          format: "int64"
       xml:
-        name: Post
-    PostResponse:
-      type: object
-      xml:
-        name: PostResponse
-    Topic:
-      type: object
-      required:
-        - name
-        - description
-        - order
+        name: Measure
+    Position:
+      type: "object"
       properties:
-        name:
-          type: string
-        description:
-          type: string
-        order:
-          type: integer
-          format: int32
+        latitude:
+          type: "integer"
+          format: "int64"
+        longitude:
+          type: "integer"
+          format: "int64"
       xml:
-        name: Topic
+        name: "Position"
     User:
       type: object
       required:

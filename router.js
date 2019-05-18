@@ -4,8 +4,6 @@ import yamljs from 'yamljs';
 import passport from 'passport';
 
 import {
-  postRouter,
-  topicRouter,
   userRouter,
   actionsRouter,
   measureRouter,
@@ -19,8 +17,6 @@ if (process.env.NODE_ENV !== 'test') {
 }
 
 const endpointsWithHandlers = [
-  { endpoint: 'post', handler: postRouter },
-  { endpoint: 'topic', handler: topicRouter },
   { endpoint: 'user', handler: userRouter },
   { endpoint: 'actions', handler: actionsRouter },
   { endpoint: 'measures', handler: measureRouter },

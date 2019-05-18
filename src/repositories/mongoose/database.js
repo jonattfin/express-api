@@ -8,7 +8,7 @@ function connect() {
   const url = config.get('mongo:url');
   logger.info(`Mongo url is: '${url}'.`);
 
-  // mongoose.connect(url, { useNewUrlParser: true });
+  // mongoose.connect(url, { useNewUrlParser: true }); // TODO
 }
 
 export default { connect };
