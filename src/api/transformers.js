@@ -6,7 +6,8 @@ const TYPES = ['pm10', 'pm25', 'temperature', 'humidity'];
 
 export function transformUradData(data) {
   const results = data
-    .filter(item => item.status !== null && item.timelast !== null && item.country === 'RO')
+    .filter(({ status, timelast, city }) => status !== null && timelast !== null && city === 'Cluj-Napoca')
+    .filter(({ latitude, longitude }) => latitude !== null && longitude !== null)
     .map((item) => {
       const {
         // eslint-disable-next-line camelcase
@@ -26,7 +27,6 @@ export function transformUradData(data) {
         humidity: _.parseInt(avg_humidity) || null,
       };
     });
-
   return results;
 }
 
@@ -38,6 +38,12 @@ export function transformPulseData(data) {
     const groupedBySensorId = _.groupBy(dayValues, item => item.sensorId);
 
     _.forEach(groupedBySensorId, (sensorValues, sensorId) => {
+      const { position } = _.first(sensorValues);
+
+      if (sensorValues.length === 0 || !position) {
+        return;
+      }
+
       const obj = {};
       TYPES.forEach((type) => {
         const values = sensorValues
@@ -53,11 +59,45 @@ export function transformPulseData(data) {
         country: 'Romania',
         day,
         sensorId,
-        position: _.first(sensorValues).position.split(','),
+        position: _.split(position, ','),
         ...obj,
       });
     });
   });
+
+  return results;
+}
+
+export function transformCustomUradData(sensors, data) {
+  const results = [];
+
+  for (let index = 0; index < sensors.length; index += 1) {
+    const { id, city, country } = sensors[index];
+    const sensorData = data[index];
+
+    if (!Array.isArray(sensorData)) { // HACK
+      break;
+    }
+
+    sensorData.forEach((item) => {
+      const { time, latitude, longitude } = item;
+
+      const obj = {};
+      TYPES.forEach((type) => {
+        obj[type] = _.parseInt(item[type]) || null;
+      });
+
+      results.push({
+        source: 'urad',
+        city,
+        country,
+        sensorId: id,
+        day: moment.unix(time).format(DATE_FORMAT),
+        position: [latitude, longitude],
+        ...obj,
+      });
+    });
+  }
 
   return results;
 }

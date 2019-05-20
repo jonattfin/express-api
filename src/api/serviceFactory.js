@@ -63,23 +63,20 @@ function getInstance(type) {
       throw new Error(`The instance of type ${type} is not supported!`);
   }
 
-  const maxContentLength = 1024 * 1024; // 1MB
-
   return axios.create({
     baseURL: url,
-    timeout: 5 * 1000,
+    // timeout: 30 * 1000,
     headers,
-    maxContentLength,
   });
 }
 
 export const UradService = new RestHelper(getInstance('urad'));
 
 const extraConfig = {
-  auth: {
-    username: '',
-    password: '',
-  },
+  // auth: {
+  //   username: '',
+  //   password: '',
+  // },
 };
 
 export const PulseService = new RestHelper(getInstance('pulse'), extraConfig);
