@@ -5,70 +5,66 @@ const DATE_FORMAT = 'YYYY-MM-DD';
 const TYPES = ['pm10', 'pm25', 'temperature', 'humidity'];
 
 export function transformUradData(data) {
-  const results = data
-    .filter(({ status, timelast, city }) => status !== null && timelast !== null && city === 'Cluj-Napoca')
-    .filter(({ latitude, longitude }) => latitude !== null && longitude !== null)
-    .map((item) => {
-      const {
-        // eslint-disable-next-line camelcase
-        id, city, country, avg_pm10, avg_pm25, latitude, longitude, avg_temperature, avg_humidity, timelast,
-      } = item;
-
-      return {
-        source: 'urad',
-        city,
-        country,
-        day: moment.unix(timelast).format(DATE_FORMAT),
-        sensorId: id,
-        position: [latitude, longitude],
-        pm10: _.parseInt(avg_pm10) || null,
-        pm25: _.parseInt(avg_pm25) || null,
-        temperature: _.parseInt(avg_temperature) || null,
-        humidity: _.parseInt(avg_humidity) || null,
-      };
-    });
-  return results;
+  const mapped = data.filter(({ status }) => status !== null)
+    .map(fromUradFormat);
+  return calculateAverage(filterData(mapped));
 }
 
 export function transformPulseData(data) {
-  const groupedByDay = _.groupBy(data, item => moment(item.stamp).format(DATE_FORMAT));
-
-  const results = [];
-  _.forEach(groupedByDay, (dayValues, day) => {
-    const groupedBySensorId = _.groupBy(dayValues, item => item.sensorId);
-
-    _.forEach(groupedBySensorId, (sensorValues, sensorId) => {
-      const { position } = _.first(sensorValues);
-
-      if (sensorValues.length === 0 || !position) {
-        return;
-      }
-
-      const obj = {};
-      TYPES.forEach((type) => {
-        const values = sensorValues
-          .filter(item => item.type === type)
-          .map(item => _.toNumber(item.value));
-
-        obj[type] = Math.trunc(values.reduce((prev, current) => prev + current, 0) / values.length) || null;
-      });
-
-      results.push({
-        source: 'pulse',
-        city: 'Cluj-Napoca', // TODO
-        country: 'Romania',
-        day,
-        sensorId,
-        position: _.split(position, ','),
-        ...obj,
-      });
-    });
-  });
-
-  return results;
+  const mapped = data.map(fromPulseFormat);
+  return calculateAverage(filterData(mapped));
 }
 
-export function transformCustomUradData(sensors, data) {
+export function transformUradDetailsData(sensors, data) {
+  const mapped = fromUradDetailsFormat(sensors, data);
+  return calculateAverage(filterData(mapped));
+}
+
+function filterData(data) {
+  return data.filter(({ city, country }) => city === 'Cluj-Napoca' && country === 'RO');
+}
+
+function fromPulseFormat(item) {
+  const {
+    sensorId,
+    stamp,
+    position,
+    type,
+    value,
+  } = item;
+
+  return {
+    source: 'pulse',
+    city: 'Cluj-Napoca',
+    country: 'RO',
+    day: moment(stamp).format(DATE_FORMAT),
+    sensorId,
+    [type]: _.parseInt(value),
+    position: _.split(position, ','),
+  };
+}
+
+function fromUradFormat(item) {
+  const {
+    // eslint-disable-next-line camelcase
+    id, city, country, timelast, latitude, longitude, avg_temperature, avg_humidity, avg_pm10, avg_pm25,
+  } = item;
+
+  return {
+    source: 'urad',
+    city,
+    country,
+    day: moment.unix(timelast).format(DATE_FORMAT),
+    sensorId: id,
+    position: [latitude, longitude],
+    pm10: _.parseInt(avg_pm10) || null,
+    pm25: _.parseInt(avg_pm25) || null,
+    temperature: _.parseInt(avg_temperature) || null,
+    humidity: _.parseInt(avg_humidity) || null,
+  };
+}
+
+function fromUradDetailsFormat(sensors, data) {
   const results = [];
 
   for (let index = 0; index < sensors.length; index += 1) {
@@ -98,6 +94,51 @@ export function transformCustomUradData(sensors, data) {
       });
     });
   }
+
+  return results;
+}
+
+function calculateAverage(data) {
+  const groupedByDay = _.groupBy(data, ({ day }) => day);
+
+  const results = [];
+  _.forEach(groupedByDay, (dayValues, day) => {
+    const groupedBySensorId = _.groupBy(dayValues, ({ sensorId }) => sensorId);
+
+    _.forEach(groupedBySensorId, (sensorValues, sensorId) => {
+      const item = _.first(sensorValues);
+      const {
+        position, source, city, country,
+      } = item;
+      const [latitude, longitude] = position;
+
+      if (sensorValues.length === 0 || !latitude || !longitude) {
+        return;
+      }
+
+      const obj = {};
+      TYPES.forEach((type) => {
+        const values = sensorValues
+          .map(currentItem => currentItem[type] || 0);
+
+        if (values.length === 0) {
+          return;
+        }
+
+        obj[type] = Math.trunc(values.reduce((prev, current) => prev + current, 0) / values.length);
+      });
+
+      results.push({
+        source,
+        city,
+        country,
+        day,
+        sensorId,
+        position,
+        ...obj,
+      });
+    });
+  });
 
   return results;
 }

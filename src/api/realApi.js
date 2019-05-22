@@ -4,7 +4,7 @@ import moment from 'moment';
 import { UradService, PulseService } from './serviceFactory';
 
 import { UradDataDay } from './data';
-import { transformUradData, transformPulseData, transformCustomUradData } from './transformers';
+import { transformUradData, transformPulseData, transformUradDetailsData } from './transformers';
 
 export default class RealApi {
   static async getLastDay() {
@@ -18,7 +18,7 @@ export default class RealApi {
   }
 
   static async getLastWeek() {
-    const numberOfDays = 2;
+    const numberOfDays = 7;
 
     // pulse
     const sensors = await PulseService.get('sensor');
@@ -33,7 +33,7 @@ export default class RealApi {
     const uradUrls = filteredUradSensors.map(({ id }) => buildUradUrl(id, numberOfDays));
     const uradData = await Promise.all(uradUrls.map(([url]) => UradService.get(url)));
 
-    const results = transformCustomUradData(filteredUradSensors, uradData);
+    const results = transformUradDetailsData(filteredUradSensors, uradData);
     return _.concat(results, applyTransformations({ transformers: [transformPulseData], data: [_.concat(...pulseData)] }));
   }
 

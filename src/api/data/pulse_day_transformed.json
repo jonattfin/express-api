@@ -1,0 +1,92 @@
+[
+	{
+		"source": "pulse",
+		"city": "Cluj-Napoca",
+		"country": "RO",
+		"day": "2019-05-15",
+		"sensorId": "23db8195-a4d5-4212-9fb0-975df5760b0e",
+		"position": [
+			"46.778748",
+			"23.581241"
+		],
+		"pm10": 1,
+		"pm25": 0,
+		"temperature": 2,
+		"humidity": 17
+	},
+	{
+		"source": "pulse",
+		"city": "Cluj-Napoca",
+		"country": "RO",
+		"day": "2019-05-15",
+		"sensorId": "c48c8361-7d5f-41ac-8b38-e003f16033ff",
+		"position": [
+			"46.75650431369247",
+			"23.596658706665036"
+		],
+		"pm10": 1,
+		"pm25": 0,
+		"temperature": 2,
+		"humidity": 16
+	},
+	{
+		"source": "pulse",
+		"city": "Cluj-Napoca",
+		"country": "RO",
+		"day": "2019-05-16",
+		"sensorId": "23db8195-a4d5-4212-9fb0-975df5760b0e",
+		"position": [
+			"46.778748",
+			"23.581241"
+		],
+		"pm10": 2,
+		"pm25": 1,
+		"temperature": 2,
+		"humidity": 18
+	},
+	{
+		"source": "pulse",
+		"city": "Cluj-Napoca",
+		"country": "RO",
+		"day": "2019-05-16",
+		"sensorId": "c48c8361-7d5f-41ac-8b38-e003f16033ff",
+		"position": [
+			"46.75650431369247",
+			"23.596658706665036"
+		],
+		"pm10": 2,
+		"pm25": 1,
+		"temperature": 2,
+		"humidity": 17
+	},
+	{
+		"source": "pulse",
+		"city": "Cluj-Napoca",
+		"country": "RO",
+		"day": "2019-05-16",
+		"sensorId": "7fb6e55c-8593-46db-ab38-e1ce6031d771",
+		"position": [
+			"46.7777",
+			"23.5502"
+		],
+		"pm10": 2,
+		"pm25": 1,
+		"temperature": 0,
+		"humidity": 0
+	},
+	{
+		"source": "pulse",
+		"city": "Cluj-Napoca",
+		"country": "RO",
+		"day": "2019-05-16",
+		"sensorId": "90658647-2bed-447a-a8c5-a0e808d4567f",
+		"position": [
+			"46.7786",
+			"23.6158"
+		],
+		"pm10": 3,
+		"pm25": 1,
+		"temperature": 0,
+		"humidity": 0
+	}
+]

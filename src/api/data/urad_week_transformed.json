@@ -1,0 +1,152 @@
+[
+  {
+    "source": "urad",
+    "city": "Cluj-Napoca",
+    "country": "RO",
+    "day": "2019-05-20",
+    "sensorId": "82000002",
+    "position": [
+      46.772069,
+      23.593839
+    ],
+    "pm10": 6,
+    "pm25": 4,
+    "temperature": 16,
+    "humidity": 70
+  },
+  {
+    "source": "urad",
+    "city": "Cluj-Napoca",
+    "country": "RO",
+    "day": "2019-05-20",
+    "sensorId": "82000004",
+    "position": [
+      46.751116,
+      23.577487
+    ],
+    "pm10": 1,
+    "pm25": 0,
+    "temperature": 17,
+    "humidity": 73
+  },
+  {
+    "source": "urad",
+    "city": "Cluj-Napoca",
+    "country": "RO",
+    "day": "2019-05-20",
+    "sensorId": "82000005",
+    "position": [
+      46.773043,
+      23.596867
+    ],
+    "pm10": 1,
+    "pm25": 0,
+    "temperature": 15,
+    "humidity": 74
+  },
+  {
+    "source": "urad",
+    "city": "Cluj-Napoca",
+    "country": "RO",
+    "day": "2019-05-20",
+    "sensorId": "82000007",
+    "position": [
+      46.752629,
+      23.577711
+    ],
+    "pm10": 2,
+    "pm25": 1,
+    "temperature": 16,
+    "humidity": 77
+  },
+  {
+    "source": "urad",
+    "city": "Cluj-Napoca",
+    "country": "RO",
+    "day": "2019-05-20",
+    "sensorId": "8200000A",
+    "position": [
+      46.754384,
+      23.583624
+    ],
+    "pm10": 1,
+    "pm25": 0,
+    "temperature": 14,
+    "humidity": 79
+  },
+  {
+    "source": "urad",
+    "city": "Cluj-Napoca",
+    "country": "RO",
+    "day": "2019-05-21",
+    "sensorId": "82000002",
+    "position": [
+      46.780735,
+      23.627664
+    ],
+    "pm10": 6,
+    "pm25": 4,
+    "temperature": 14,
+    "humidity": 80
+  },
+  {
+    "source": "urad",
+    "city": "Cluj-Napoca",
+    "country": "RO",
+    "day": "2019-05-21",
+    "sensorId": "82000004",
+    "position": [
+      46.751116,
+      23.577487
+    ],
+    "pm10": 1,
+    "pm25": 0,
+    "temperature": 13,
+    "humidity": 85
+  },
+  {
+    "source": "urad",
+    "city": "Cluj-Napoca",
+    "country": "RO",
+    "day": "2019-05-21",
+    "sensorId": "82000005",
+    "position": [
+      46.765106,
+      23.549238
+    ],
+    "pm10": 1,
+    "pm25": 0,
+    "temperature": 13,
+    "humidity": 76
+  },
+  {
+    "source": "urad",
+    "city": "Cluj-Napoca",
+    "country": "RO",
+    "day": "2019-05-21",
+    "sensorId": "82000007",
+    "position": [
+      46.765,
+      23.548999
+    ],
+    "pm10": 3,
+    "pm25": 2,
+    "temperature": 16,
+    "humidity": 75
+  },
+  {
+    "source": "urad",
+    "city": "Cluj-Napoca",
+    "country": "RO",
+    "day": "2019-05-21",
+    "sensorId": "8200000A",
+    "position": [
+      46.751043,
+      23.57731
+    ],
+    "pm10": 1,
+    "pm25": 0,
+    "temperature": 11,
+    "humidity": 87
+  }
+]

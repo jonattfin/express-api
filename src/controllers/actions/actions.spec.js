@@ -6,7 +6,7 @@ import repositories from '../../repositories';
 
 const apiPrefix = '/api/v1';
 
-describe('/actions', () => {
+describe.skip('/actions', () => {
   // populate
   beforeAll(async () => {
     await repositories.seedRepository.populate();

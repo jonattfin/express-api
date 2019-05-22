@@ -73,10 +73,10 @@ function getInstance(type) {
 export const UradService = new RestHelper(getInstance('urad'));
 
 const extraConfig = {
-  // auth: {
-  //   username: '',
-  //   password: '',
-  // },
+  auth: {
+    username: process.env.PULSE_USER,
+    password: process.env.PULSE_PWD,
+  },
 };
 
 export const PulseService = new RestHelper(getInstance('pulse'), extraConfig);
