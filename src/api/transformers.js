@@ -1,7 +1,7 @@
 import moment from 'moment';
 import _ from 'lodash';
 
-const DATE_FORMAT = 'YYYY-MM-DD';
+// const DATE_FORMAT = 'YYYY-MM-DD';
 const TYPES = ['pm10', 'pm25', 'temperature', 'humidity'];
 
 export function transformUradData(data) {
@@ -37,7 +37,7 @@ function fromPulseFormat(item) {
     source: 'pulse',
     city: 'Cluj-Napoca',
     country: 'RO',
-    day: moment(stamp).format(DATE_FORMAT),
+    time: formatDate(moment(stamp)),
     sensorId,
     [type]: _.parseInt(value),
     position: _.split(position, ','),
@@ -54,7 +54,7 @@ function fromUradFormat(item) {
     source: 'urad',
     city,
     country,
-    day: moment.unix(timelast).format(DATE_FORMAT),
+    time: formatDate(moment.unix(timelast)),
     sensorId: id,
     position: [latitude, longitude],
     pm10: _.parseInt(avg_pm10) || null,
@@ -88,7 +88,7 @@ function fromUradDetailsFormat(sensors, data) {
         city,
         country,
         sensorId: id,
-        day: moment.unix(time).format(DATE_FORMAT),
+        time: formatDate(moment.unix(time)),
         position: [latitude, longitude],
         ...obj,
       });
@@ -98,12 +98,16 @@ function fromUradDetailsFormat(sensors, data) {
   return results;
 }
 
+function formatDate(d) {
+  return parseInt(moment(d).hour(), 10);
+}
+
 function calculateAverage(data) {
-  const groupedByDay = _.groupBy(data, ({ day }) => day);
+  const groupedByTime = _.groupBy(data, ({ time }) => time);
 
   const results = [];
-  _.forEach(groupedByDay, (dayValues, day) => {
-    const groupedBySensorId = _.groupBy(dayValues, ({ sensorId }) => sensorId);
+  _.forEach(groupedByTime, (timeValues, time) => {
+    const groupedBySensorId = _.groupBy(timeValues, ({ sensorId }) => sensorId);
 
     _.forEach(groupedBySensorId, (sensorValues, sensorId) => {
       const item = _.first(sensorValues);
@@ -132,7 +136,7 @@ function calculateAverage(data) {
         source,
         city,
         country,
-        day,
+        time,
         sensorId,
         position,
         ...obj,
