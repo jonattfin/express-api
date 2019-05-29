@@ -3,7 +3,22 @@
 		"source": "urad",
 		"city": "Cluj-Napoca",
 		"country": "RO",
-		"day": "2019-05-14",
+		"time": "18",
+		"sensorId": "8200000A",
+		"position": [
+			"46.75103600",
+			"23.57723400"
+		],
+		"pm10": 1,
+		"pm25": 0,
+		"temperature": 14,
+		"humidity": 78
+	},
+	{
+		"source": "urad",
+		"city": "Cluj-Napoca",
+		"country": "RO",
+		"time": "19",
 		"sensorId": "82000002",
 		"position": [
 			"46.76628400",
@@ -18,7 +33,7 @@
 		"source": "urad",
 		"city": "Cluj-Napoca",
 		"country": "RO",
-		"day": "2019-05-14",
+		"time": "19",
 		"sensorId": "82000004",
 		"position": [
 			"46.75111600",
@@ -33,7 +48,7 @@
 		"source": "urad",
 		"city": "Cluj-Napoca",
 		"country": "RO",
-		"day": "2019-05-14",
+		"time": "19",
 		"sensorId": "82000005",
 		"position": [
 			"46.76510300",
@@ -48,7 +63,7 @@
 		"source": "urad",
 		"city": "Cluj-Napoca",
 		"country": "RO",
-		"day": "2019-05-14",
+		"time": "19",
 		"sensorId": "82000007",
 		"position": [
 			"46.77016600",
@@ -58,20 +73,5 @@
 		"pm25": 6,
 		"temperature": 18,
 		"humidity": 66
-	},
-	{
-		"source": "urad",
-		"city": "Cluj-Napoca",
-		"country": "RO",
-		"day": "2019-05-14",
-		"sensorId": "8200000A",
-		"position": [
-			"46.75103600",
-			"23.57723400"
-		],
-		"pm10": 1,
-		"pm25": 0,
-		"temperature": 14,
-		"humidity": 78
 	}
 ]

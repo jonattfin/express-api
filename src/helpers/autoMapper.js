@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 export default class AutoMapper {
   static mapUser(user) {
     const model = getModel(user);

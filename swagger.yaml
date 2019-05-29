@@ -92,221 +92,221 @@ paths:
                   $ref: '#/components/schemas/Measure'
         '401':
           $ref: '#/components/responses/UnauthorizedError'
-  /user:
-    get:
-      security:
-      - bearerAuth: []
-      tags:
-        - user
-      summary: Find all users
-      description: Returns all users
-      operationId: getUsers
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/xml:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/User'
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/User'
-        '401':
-          $ref: '#/components/responses/UnauthorizedError'
-  /actions/login:
-    post:
-      tags:
-        - actions
-      summary: Get the token that will be used by the user to log in into the system
-      description: ''
-      operationId: login
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UserLogin'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/UserLogin'
-        description: Login data
-        required: true
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/xml:
-              schema:
-                type: string
-            application/json:
-              schema:
-                type: string
-        '400':
-          description: Invalid username/password supplied
-  /actions/seed:
-    put:
-      tags:
-        - actions
-      summary: Seeds the DB (delete everything & create new items)
-      description: Be aware that everything existing will be deleted
-      operationId: populate
-      responses:
-        '201':
-          description: All items were inserted into DB
-        '422':
-          description: Validation exception
-  /actions/signUp:
-    post:
-      tags:
-        - actions
-      summary: Create user
-      description: This can only be done by the non logged in user.
-      operationId: createUser
-      responses:
-        '201':
-          description: Item created
-        '401':
-          $ref: '#/components/responses/UnauthorizedError'
-        '422':
-          description: Invalid input
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/User'
-        description: Created user object
-        required: true
-  '/user/{id}':
-    get:
-      security:
-      - bearerAuth: []
-      tags:
-        - user
-      summary: Get user by id
-      description: ''
-      operationId: getUserById
-      parameters:
-        - name: id
-          in: path
-          description: The id of the user that needs to be fetched.
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/User'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
-        '400':
-          description: Invalid id supplied
-        '401':
-          $ref: '#/components/responses/UnauthorizedError'
-        '404':
-          description: User not found
-    put:
-      security:
-      - bearerAuth: []
-      tags:
-        - user
-      summary: Update an existing user
-      description: ''
-      operationId: updateById
-      parameters:
-        - name: id
-          in: path
-          description: ID of user to update
-          required: true
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/User'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/User'
-        description: User object that needs to be updated
-        required: true
-      responses:
-        '400':
-          description: Invalid ID supplied
-        '401':
-          $ref: '#/components/responses/UnauthorizedError'
-        '404':
-          description: User not found
-        '422':
-          description: Validation exception
-    delete:
-      security:
-      - bearerAuth: []
-      tags:
-        - user
-      summary: Delete user
-      description: This can only be done by the logged in user.
-      operationId: deleteUser
-      parameters:
-        - name: id
-          in: path
-          description: The id that needs to be deleted
-          required: true
-          schema:
-            type: string
-      responses:
-        '400':
-          description: Invalid id supplied
-        '401':
-          $ref: '#/components/responses/UnauthorizedError'
-        '404':
-          description: User not found
-  /user/loggedin:
-    get:
-      security:
-      - bearerAuth: []
-      tags:
-        - user
-      summary: Get logged in user.
-      description: ''
-      operationId: getLoggedInUser
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/User'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
-        '401':
-          $ref: '#/components/responses/UnauthorizedError'
-  /user/logout:
-    post:
-      security:
-      - bearerAuth: []
-      tags:
-        - user
-      summary: Logout the user from the system / Invalidate the token for the user.
-      description: ''
-      operationId: logout
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/xml:
-              schema:
-                type: string
-            application/json:
-              schema:
-                type: string
+  # /user:
+  #   get:
+  #     security:
+  #     - bearerAuth: []
+  #     tags:
+  #       - user
+  #     summary: Find all users
+  #     description: Returns all users
+  #     operationId: getUsers
+  #     responses:
+  #       '200':
+  #         description: successful operation
+  #         content:
+  #           application/xml:
+  #             schema:
+  #               type: array
+  #               items:
+  #                 $ref: '#/components/schemas/User'
+  #           application/json:
+  #             schema:
+  #               type: array
+  #               items:
+  #                 $ref: '#/components/schemas/User'
+  #       '401':
+  #         $ref: '#/components/responses/UnauthorizedError'
+  # /actions/login:
+  #   post:
+  #     tags:
+  #       - actions
+  #     summary: Get the token that will be used by the user to log in into the system
+  #     description: ''
+  #     operationId: login
+  #     requestBody:
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: '#/components/schemas/UserLogin'
+  #         application/xml:
+  #           schema:
+  #             $ref: '#/components/schemas/UserLogin'
+  #       description: Login data
+  #       required: true
+  #     responses:
+  #       '200':
+  #         description: successful operation
+  #         content:
+  #           application/xml:
+  #             schema:
+  #               type: string
+  #           application/json:
+  #             schema:
+  #               type: string
+  #       '400':
+  #         description: Invalid username/password supplied
+  # /actions/seed:
+  #   put:
+  #     tags:
+  #       - actions
+  #     summary: Seeds the DB (delete everything & create new items)
+  #     description: Be aware that everything existing will be deleted
+  #     operationId: populate
+  #     responses:
+  #       '201':
+  #         description: All items were inserted into DB
+  #       '422':
+  #         description: Validation exception
+  # /actions/signUp:
+  #   post:
+  #     tags:
+  #       - actions
+  #     summary: Create user
+  #     description: This can only be done by the non logged in user.
+  #     operationId: createUser
+  #     responses:
+  #       '201':
+  #         description: Item created
+  #       '401':
+  #         $ref: '#/components/responses/UnauthorizedError'
+  #       '422':
+  #         description: Invalid input
+  #     requestBody:
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: '#/components/schemas/User'
+  #       description: Created user object
+  #       required: true
+  # '/user/{id}':
+  #   get:
+  #     security:
+  #     - bearerAuth: []
+  #     tags:
+  #       - user
+  #     summary: Get user by id
+  #     description: ''
+  #     operationId: getUserById
+  #     parameters:
+  #       - name: id
+  #         in: path
+  #         description: The id of the user that needs to be fetched.
+  #         required: true
+  #         schema:
+  #           type: string
+  #     responses:
+  #       '200':
+  #         description: successful operation
+  #         content:
+  #           application/xml:
+  #             schema:
+  #               $ref: '#/components/schemas/User'
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/User'
+  #       '400':
+  #         description: Invalid id supplied
+  #       '401':
+  #         $ref: '#/components/responses/UnauthorizedError'
+  #       '404':
+  #         description: User not found
+  #   put:
+  #     security:
+  #     - bearerAuth: []
+  #     tags:
+  #       - user
+  #     summary: Update an existing user
+  #     description: ''
+  #     operationId: updateById
+  #     parameters:
+  #       - name: id
+  #         in: path
+  #         description: ID of user to update
+  #         required: true
+  #         schema:
+  #           type: string
+  #     requestBody:
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: '#/components/schemas/User'
+  #         application/xml:
+  #           schema:
+  #             $ref: '#/components/schemas/User'
+  #       description: User object that needs to be updated
+  #       required: true
+  #     responses:
+  #       '400':
+  #         description: Invalid ID supplied
+  #       '401':
+  #         $ref: '#/components/responses/UnauthorizedError'
+  #       '404':
+  #         description: User not found
+  #       '422':
+  #         description: Validation exception
+  #   delete:
+  #     security:
+  #     - bearerAuth: []
+  #     tags:
+  #       - user
+  #     summary: Delete user
+  #     description: This can only be done by the logged in user.
+  #     operationId: deleteUser
+  #     parameters:
+  #       - name: id
+  #         in: path
+  #         description: The id that needs to be deleted
+  #         required: true
+  #         schema:
+  #           type: string
+  #     responses:
+  #       '400':
+  #         description: Invalid id supplied
+  #       '401':
+  #         $ref: '#/components/responses/UnauthorizedError'
+  #       '404':
+  #         description: User not found
+  # /user/loggedin:
+  #   get:
+  #     security:
+  #     - bearerAuth: []
+  #     tags:
+  #       - user
+  #     summary: Get logged in user.
+  #     description: ''
+  #     operationId: getLoggedInUser
+  #     responses:
+  #       '200':
+  #         description: successful operation
+  #         content:
+  #           application/xml:
+  #             schema:
+  #               $ref: '#/components/schemas/User'
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/User'
+  #       '401':
+  #         $ref: '#/components/responses/UnauthorizedError'
+  # /user/logout:
+  #   post:
+  #     security:
+  #     - bearerAuth: []
+  #     tags:
+  #       - user
+  #     summary: Logout the user from the system / Invalidate the token for the user.
+  #     description: ''
+  #     operationId: logout
+  #     responses:
+  #       '200':
+  #         description: successful operation
+  #         content:
+  #           application/xml:
+  #             schema:
+  #               type: string
+  #           application/json:
+  #             schema:
+  #               type: string
 externalDocs:
   description: Find out more about Swagger
   url: 'http://swagger.io'

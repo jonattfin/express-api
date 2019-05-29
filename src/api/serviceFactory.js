@@ -74,8 +74,8 @@ export const UradService = new RestHelper(getInstance('urad'));
 
 const extraConfig = {
   auth: {
-    username: process.env.PULSE_USER,
-    password: process.env.PULSE_PWD,
+    username: process.env.PULSE_USER || 'jonattfin1',
+    password: process.env.PULSE_PWD || 't4ZPcY8W4suY',
   },
 };
 
