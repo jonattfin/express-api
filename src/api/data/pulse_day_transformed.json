@@ -9,10 +9,10 @@
 			"46.778748",
 			"23.581241"
 		],
-		"pm10": 1,
-		"pm25": 1,
-		"temperature": 2,
-		"humidity": 17
+		"pm10": 6,
+		"pm25": 5,
+		"temperature": 12,
+		"humidity": 89
 	},
 	{
 		"source": "pulse",
@@ -24,10 +24,10 @@
 			"46.75650431369247",
 			"23.596658706665036"
 		],
-		"pm10": 1,
-		"pm25": 0,
-		"temperature": 2,
-		"humidity": 17
+		"pm10": 8,
+		"pm25": 3,
+		"temperature": 12,
+		"humidity": 87
 	},
 	{
 		"source": "pulse",
@@ -39,10 +39,10 @@
 			"46.778748",
 			"23.581241"
 		],
-		"pm10": 2,
-		"pm25": 1,
-		"temperature": 2,
-		"humidity": 18
+		"pm10": 11,
+		"pm25": 8,
+		"temperature": 12,
+		"humidity": 92
 	},
 	{
 		"source": "pulse",
@@ -54,10 +54,10 @@
 			"46.75650431369247",
 			"23.596658706665036"
 		],
-		"pm10": 1,
-		"pm25": 0,
-		"temperature": 2,
-		"humidity": 17
+		"pm10": 7,
+		"pm25": 3,
+		"temperature": 12,
+		"humidity": 89
 	},
 	{
 		"source": "pulse",
@@ -69,10 +69,10 @@
 			"46.75650431369247",
 			"23.596658706665036"
 		],
-		"pm10": 2,
-		"pm25": 0,
-		"temperature": 2,
-		"humidity": 18
+		"pm10": 10,
+		"pm25": 4,
+		"temperature": 12,
+		"humidity": 90
 	},
 	{
 		"source": "pulse",
@@ -84,10 +84,10 @@
 			"46.778748",
 			"23.581241"
 		],
-		"pm10": 2,
-		"pm25": 1,
-		"temperature": 2,
-		"humidity": 18
+		"pm10": 11,
+		"pm25": 9,
+		"temperature": 12,
+		"humidity": 92
 	},
 	{
 		"source": "pulse",
@@ -99,10 +99,10 @@
 			"46.75650431369247",
 			"23.596658706665036"
 		],
-		"pm10": 2,
-		"pm25": 1,
-		"temperature": 2,
-		"humidity": 18
+		"pm10": 10,
+		"pm25": 5,
+		"temperature": 12,
+		"humidity": 91
 	},
 	{
 		"source": "pulse",
@@ -114,10 +114,10 @@
 			"46.778748",
 			"23.581241"
 		],
-		"pm10": 3,
-		"pm25": 2,
-		"temperature": 2,
-		"humidity": 18
+		"pm10": 16,
+		"pm25": 10,
+		"temperature": 12,
+		"humidity": 91
 	},
 	{
 		"source": "pulse",
@@ -129,10 +129,10 @@
 			"46.778748",
 			"23.581241"
 		],
-		"pm10": 3,
-		"pm25": 2,
-		"temperature": 2,
-		"humidity": 18
+		"pm10": 18,
+		"pm25": 12,
+		"temperature": 12,
+		"humidity": 90
 	},
 	{
 		"source": "pulse",
@@ -144,10 +144,10 @@
 			"46.75650431369247",
 			"23.596658706665036"
 		],
-		"pm10": 3,
-		"pm25": 1,
-		"temperature": 2,
-		"humidity": 18
+		"pm10": 15,
+		"pm25": 7,
+		"temperature": 11,
+		"humidity": 90
 	},
 	{
 		"source": "pulse",
@@ -159,10 +159,10 @@
 			"46.778748",
 			"23.581241"
 		],
-		"pm10": 4,
-		"pm25": 2,
-		"temperature": 2,
-		"humidity": 18
+		"pm10": 20,
+		"pm25": 13,
+		"temperature": 12,
+		"humidity": 91
 	},
 	{
 		"source": "pulse",
@@ -174,10 +174,10 @@
 			"46.75650431369247",
 			"23.596658706665036"
 		],
-		"pm10": 3,
-		"pm25": 1,
-		"temperature": 2,
-		"humidity": 17
+		"pm10": 18,
+		"pm25": 7,
+		"temperature": 11,
+		"humidity": 89
 	},
 	{
 		"source": "pulse",
@@ -189,10 +189,10 @@
 			"46.778748",
 			"23.581241"
 		],
-		"pm10": 4,
-		"pm25": 2,
-		"temperature": 2,
-		"humidity": 18
+		"pm10": 22,
+		"pm25": 13,
+		"temperature": 11,
+		"humidity": 92
 	},
 	{
 		"source": "pulse",
@@ -204,10 +204,10 @@
 			"46.75650431369247",
 			"23.596658706665036"
 		],
-		"pm10": 4,
-		"pm25": 1,
-		"temperature": 2,
-		"humidity": 18
+		"pm10": 20,
+		"pm25": 8,
+		"temperature": 11,
+		"humidity": 90
 	},
 	{
 		"source": "pulse",
@@ -219,10 +219,10 @@
 			"46.778748",
 			"23.581241"
 		],
-		"pm10": 4,
-		"pm25": 2,
-		"temperature": 2,
-		"humidity": 18
+		"pm10": 22,
+		"pm25": 14,
+		"temperature": 11,
+		"humidity": 93
 	},
 	{
 		"source": "pulse",
@@ -234,10 +234,10 @@
 			"46.75650431369247",
 			"23.596658706665036"
 		],
-		"pm10": 4,
-		"pm25": 1,
-		"temperature": 2,
-		"humidity": 18
+		"pm10": 20,
+		"pm25": 8,
+		"temperature": 11,
+		"humidity": 90
 	},
 	{
 		"source": "pulse",
@@ -249,10 +249,10 @@
 			"46.778748",
 			"23.581241"
 		],
-		"pm10": 4,
-		"pm25": 2,
-		"temperature": 2,
-		"humidity": 18
+		"pm10": 22,
+		"pm25": 12,
+		"temperature": 11,
+		"humidity": 93
 	},
 	{
 		"source": "pulse",
@@ -264,10 +264,10 @@
 			"46.75650431369247",
 			"23.596658706665036"
 		],
-		"pm10": 2,
-		"pm25": 1,
-		"temperature": 2,
-		"humidity": 18
+		"pm10": 14,
+		"pm25": 7,
+		"temperature": 11,
+		"humidity": 91
 	},
 	{
 		"source": "pulse",
@@ -279,10 +279,10 @@
 			"46.778748",
 			"23.581241"
 		],
-		"pm10": 2,
-		"pm25": 1,
-		"temperature": 2,
-		"humidity": 17
+		"pm10": 12,
+		"pm25": 8,
+		"temperature": 11,
+		"humidity": 89
 	},
 	{
 		"source": "pulse",
@@ -294,10 +294,10 @@
 			"46.75650431369247",
 			"23.596658706665036"
 		],
-		"pm10": 2,
-		"pm25": 0,
-		"temperature": 2,
-		"humidity": 17
+		"pm10": 10,
+		"pm25": 4,
+		"temperature": 11,
+		"humidity": 89
 	},
 	{
 		"source": "pulse",
@@ -309,10 +309,10 @@
 			"46.75650431369247",
 			"23.596658706665036"
 		],
-		"pm10": 1,
-		"pm25": 0,
-		"temperature": 2,
-		"humidity": 17
+		"pm10": 8,
+		"pm25": 3,
+		"temperature": 12,
+		"humidity": 86
 	},
 	{
 		"source": "pulse",
@@ -324,10 +324,10 @@
 			"46.778748",
 			"23.581241"
 		],
-		"pm10": 1,
-		"pm25": 1,
-		"temperature": 2,
-		"humidity": 17
+		"pm10": 9,
+		"pm25": 6,
+		"temperature": 12,
+		"humidity": 87
 	},
 	{
 		"source": "pulse",
@@ -339,10 +339,10 @@
 			"46.778748",
 			"23.581241"
 		],
-		"pm10": 2,
-		"pm25": 1,
-		"temperature": 2,
-		"humidity": 17
+		"pm10": 10,
+		"pm25": 7,
+		"temperature": 13,
+		"humidity": 87
 	},
 	{
 		"source": "pulse",
@@ -354,55 +354,55 @@
 			"46.75650431369247",
 			"23.596658706665036"
 		],
-		"pm10": 1,
-		"pm25": 0,
-		"temperature": 2,
-		"humidity": 17
-	},
-	{
-		"source": "pulse",
-		"city": "Cluj-Napoca",
-		"country": "RO",
-		"time": "12",
-		"sensorId": "23db8195-a4d5-4212-9fb0-975df5760b0e",
-		"position": [
-			"46.778748",
-			"23.581241"
-		],
-		"pm10": 1,
-		"pm25": 1,
-		"temperature": 2,
-		"humidity": 16
-	},
-	{
-		"source": "pulse",
-		"city": "Cluj-Napoca",
-		"country": "RO",
-		"time": "12",
-		"sensorId": "c48c8361-7d5f-41ac-8b38-e003f16033ff",
-		"position": [
-			"46.75650431369247",
-			"23.596658706665036"
-		],
-		"pm10": 2,
-		"pm25": 0,
-		"temperature": 2,
-		"humidity": 16
-	},
-	{
-		"source": "pulse",
-		"city": "Cluj-Napoca",
-		"country": "RO",
-		"time": "13",
-		"sensorId": "23db8195-a4d5-4212-9fb0-975df5760b0e",
-		"position": [
-			"46.778748",
-			"23.581241"
-		],
-		"pm10": 3,
+		"pm10": 7,
 		"pm25": 2,
-		"temperature": 2,
-		"humidity": 17
+		"temperature": 12,
+		"humidity": 85
+	},
+	{
+		"source": "pulse",
+		"city": "Cluj-Napoca",
+		"country": "RO",
+		"time": "12",
+		"sensorId": "23db8195-a4d5-4212-9fb0-975df5760b0e",
+		"position": [
+			"46.778748",
+			"23.581241"
+		],
+		"pm10": 9,
+		"pm25": 6,
+		"temperature": 13,
+		"humidity": 84
+	},
+	{
+		"source": "pulse",
+		"city": "Cluj-Napoca",
+		"country": "RO",
+		"time": "12",
+		"sensorId": "c48c8361-7d5f-41ac-8b38-e003f16033ff",
+		"position": [
+			"46.75650431369247",
+			"23.596658706665036"
+		],
+		"pm10": 10,
+		"pm25": 3,
+		"temperature": 13,
+		"humidity": 84
+	},
+	{
+		"source": "pulse",
+		"city": "Cluj-Napoca",
+		"country": "RO",
+		"time": "13",
+		"sensorId": "23db8195-a4d5-4212-9fb0-975df5760b0e",
+		"position": [
+			"46.778748",
+			"23.581241"
+		],
+		"pm10": 17,
+		"pm25": 10,
+		"temperature": 13,
+		"humidity": 89
 	},
 	{
 		"source": "pulse",
@@ -414,10 +414,10 @@
 			"46.75650431369247",
 			"23.596658706665036"
 		],
-		"pm10": 3,
-		"pm25": 1,
-		"temperature": 2,
-		"humidity": 17
+		"pm10": 15,
+		"pm25": 6,
+		"temperature": 12,
+		"humidity": 87
 	},
 	{
 		"source": "pulse",
@@ -429,10 +429,10 @@
 			"46.75650431369247",
 			"23.596658706665036"
 		],
-		"pm10": 2,
-		"pm25": 1,
-		"temperature": 2,
-		"humidity": 17
+		"pm10": 13,
+		"pm25": 5,
+		"temperature": 12,
+		"humidity": 89
 	},
 	{
 		"source": "pulse",
@@ -444,10 +444,10 @@
 			"46.778748",
 			"23.581241"
 		],
-		"pm10": 2,
-		"pm25": 1,
-		"temperature": 2,
-		"humidity": 20
+		"pm10": 14,
+		"pm25": 10,
+		"temperature": 13,
+		"humidity": 91
 	},
 	{
 		"source": "pulse",
@@ -459,10 +459,10 @@
 			"46.778748",
 			"23.581241"
 		],
-		"pm10": 2,
-		"pm25": 1,
-		"temperature": 2,
-		"humidity": 17
+		"pm10": 12,
+		"pm25": 8,
+		"temperature": 13,
+		"humidity": 89
 	},
 	{
 		"source": "pulse",
@@ -474,10 +474,8 @@
 			"46.7777",
 			"23.5502"
 		],
-		"pm10": 2,
-		"pm25": 1,
-		"temperature": 0,
-		"humidity": 0
+		"pm10": 4,
+		"pm25": 2
 	},
 	{
 		"source": "pulse",
@@ -489,10 +487,10 @@
 			"46.75650431369247",
 			"23.596658706665036"
 		],
-		"pm10": 2,
-		"pm25": 0,
-		"temperature": 2,
-		"humidity": 17
+		"pm10": 10,
+		"pm25": 4,
+		"temperature": 13,
+		"humidity": 87
 	},
 	{
 		"source": "pulse",
@@ -504,10 +502,8 @@
 			"46.7786",
 			"23.6158"
 		],
-		"pm10": 3,
-		"pm25": 1,
-		"temperature": 0,
-		"humidity": 0
+		"pm10": 6,
+		"pm25": 3
 	},
 	{
 		"source": "pulse",
@@ -519,10 +515,10 @@
 			"46.778748",
 			"23.581241"
 		],
-		"pm10": 2,
-		"pm25": 1,
-		"temperature": 2,
-		"humidity": 17
+		"pm10": 13,
+		"pm25": 9,
+		"temperature": 13,
+		"humidity": 89
 	},
 	{
 		"source": "pulse",
@@ -534,10 +530,8 @@
 			"46.7786",
 			"23.6158"
 		],
-		"pm10": 3,
-		"pm25": 1,
-		"temperature": 0,
-		"humidity": 0
+		"pm10": 6,
+		"pm25": 3
 	},
 	{
 		"source": "pulse",
@@ -549,10 +543,8 @@
 			"46.7777",
 			"23.5502"
 		],
-		"pm10": 3,
-		"pm25": 1,
-		"temperature": 0,
-		"humidity": 0
+		"pm10": 6,
+		"pm25": 3
 	},
 	{
 		"source": "pulse",
@@ -564,10 +556,10 @@
 			"46.75650431369247",
 			"23.596658706665036"
 		],
-		"pm10": 2,
-		"pm25": 1,
-		"temperature": 2,
-		"humidity": 17
+		"pm10": 13,
+		"pm25": 5,
+		"temperature": 13,
+		"humidity": 87
 	},
 	{
 		"source": "pulse",
@@ -579,10 +571,10 @@
 			"46.778748",
 			"23.581241"
 		],
-		"pm10": 2,
-		"pm25": 1,
-		"temperature": 3,
-		"humidity": 16
+		"pm10": 14,
+		"pm25": 6,
+		"temperature": 15,
+		"humidity": 84
 	},
 	{
 		"source": "pulse",
@@ -594,10 +586,10 @@
 			"46.75650431369247",
 			"23.596658706665036"
 		],
-		"pm10": 3,
-		"pm25": 1,
-		"temperature": 2,
-		"humidity": 17
+		"pm10": 17,
+		"pm25": 6,
+		"temperature": 13,
+		"humidity": 88
 	},
 	{
 		"source": "pulse",
@@ -609,10 +601,8 @@
 			"46.7786",
 			"23.6158"
 		],
-		"pm10": 2,
-		"pm25": 1,
-		"temperature": 0,
-		"humidity": 0
+		"pm10": 5,
+		"pm25": 3
 	},
 	{
 		"source": "pulse",
@@ -624,10 +614,8 @@
 			"46.7777",
 			"23.5502"
 		],
-		"pm10": 3,
-		"pm25": 1,
-		"temperature": 0,
-		"humidity": 0
+		"pm10": 6,
+		"pm25": 3
 	},
 	{
 		"source": "pulse",
@@ -639,10 +627,10 @@
 			"46.778748",
 			"23.581241"
 		],
-		"pm10": 0,
-		"pm25": 0,
-		"temperature": 3,
-		"humidity": 16
+		"pm10": 4,
+		"pm25": 3,
+		"temperature": 15,
+		"humidity": 83
 	},
 	{
 		"source": "pulse",
@@ -654,100 +642,100 @@
 			"46.75650431369247",
 			"23.596658706665036"
 		],
-		"pm10": 0,
-		"pm25": 0,
-		"temperature": 3,
-		"humidity": 15
-	},
-	{
-		"source": "pulse",
-		"city": "Cluj-Napoca",
-		"country": "RO",
-		"time": "19",
-		"sensorId": "c48c8361-7d5f-41ac-8b38-e003f16033ff",
-		"position": [
-			"46.75650431369247",
-			"23.596658706665036"
-		],
-		"pm10": 1,
-		"pm25": 0,
-		"temperature": 2,
-		"humidity": 16
-	},
-	{
-		"source": "pulse",
-		"city": "Cluj-Napoca",
-		"country": "RO",
-		"time": "19",
-		"sensorId": "23db8195-a4d5-4212-9fb0-975df5760b0e",
-		"position": [
-			"46.778748",
-			"23.581241"
-		],
-		"pm10": 0,
-		"pm25": 0,
-		"temperature": 2,
-		"humidity": 16
-	},
-	{
-		"source": "pulse",
-		"city": "Cluj-Napoca",
-		"country": "RO",
-		"time": "20",
-		"sensorId": "23db8195-a4d5-4212-9fb0-975df5760b0e",
-		"position": [
-			"46.778748",
-			"23.581241"
-		],
-		"pm10": 1,
-		"pm25": 0,
-		"temperature": 2,
-		"humidity": 17
-	},
-	{
-		"source": "pulse",
-		"city": "Cluj-Napoca",
-		"country": "RO",
-		"time": "20",
-		"sensorId": "c48c8361-7d5f-41ac-8b38-e003f16033ff",
-		"position": [
-			"46.75650431369247",
-			"23.596658706665036"
-		],
-		"pm10": 1,
-		"pm25": 0,
-		"temperature": 2,
-		"humidity": 16
-	},
-	{
-		"source": "pulse",
-		"city": "Cluj-Napoca",
-		"country": "RO",
-		"time": "21",
-		"sensorId": "23db8195-a4d5-4212-9fb0-975df5760b0e",
-		"position": [
-			"46.778748",
-			"23.581241"
-		],
-		"pm10": 1,
-		"pm25": 1,
-		"temperature": 2,
-		"humidity": 17
-	},
-	{
-		"source": "pulse",
-		"city": "Cluj-Napoca",
-		"country": "RO",
-		"time": "21",
-		"sensorId": "c48c8361-7d5f-41ac-8b38-e003f16033ff",
-		"position": [
-			"46.75650431369247",
-			"23.596658706665036"
-		],
 		"pm10": 2,
-		"pm25": 0,
-		"temperature": 2,
-		"humidity": 17
+		"pm25": 1,
+		"temperature": 15,
+		"humidity": 77
+	},
+	{
+		"source": "pulse",
+		"city": "Cluj-Napoca",
+		"country": "RO",
+		"time": "19",
+		"sensorId": "c48c8361-7d5f-41ac-8b38-e003f16033ff",
+		"position": [
+			"46.75650431369247",
+			"23.596658706665036"
+		],
+		"pm10": 5,
+		"pm25": 2,
+		"temperature": 14,
+		"humidity": 81
+	},
+	{
+		"source": "pulse",
+		"city": "Cluj-Napoca",
+		"country": "RO",
+		"time": "19",
+		"sensorId": "23db8195-a4d5-4212-9fb0-975df5760b0e",
+		"position": [
+			"46.778748",
+			"23.581241"
+		],
+		"pm10": 3,
+		"pm25": 3,
+		"temperature": 14,
+		"humidity": 84
+	},
+	{
+		"source": "pulse",
+		"city": "Cluj-Napoca",
+		"country": "RO",
+		"time": "20",
+		"sensorId": "23db8195-a4d5-4212-9fb0-975df5760b0e",
+		"position": [
+			"46.778748",
+			"23.581241"
+		],
+		"pm10": 6,
+		"pm25": 3,
+		"temperature": 13,
+		"humidity": 86
+	},
+	{
+		"source": "pulse",
+		"city": "Cluj-Napoca",
+		"country": "RO",
+		"time": "20",
+		"sensorId": "c48c8361-7d5f-41ac-8b38-e003f16033ff",
+		"position": [
+			"46.75650431369247",
+			"23.596658706665036"
+		],
+		"pm10": 5,
+		"pm25": 2,
+		"temperature": 13,
+		"humidity": 83
+	},
+	{
+		"source": "pulse",
+		"city": "Cluj-Napoca",
+		"country": "RO",
+		"time": "21",
+		"sensorId": "23db8195-a4d5-4212-9fb0-975df5760b0e",
+		"position": [
+			"46.778748",
+			"23.581241"
+		],
+		"pm10": 6,
+		"pm25": 5,
+		"temperature": 13,
+		"humidity": 88
+	},
+	{
+		"source": "pulse",
+		"city": "Cluj-Napoca",
+		"country": "RO",
+		"time": "21",
+		"sensorId": "c48c8361-7d5f-41ac-8b38-e003f16033ff",
+		"position": [
+			"46.75650431369247",
+			"23.596658706665036"
+		],
+		"pm10": 10,
+		"pm25": 2,
+		"temperature": 13,
+		"humidity": 85
 	},
 	{
 		"source": "pulse",
@@ -759,10 +747,10 @@
 			"46.778748",
 			"23.581241"
 		],
-		"pm10": 1,
-		"pm25": 1,
-		"temperature": 2,
-		"humidity": 17
+		"pm10": 9,
+		"pm25": 6,
+		"temperature": 13,
+		"humidity": 89
 	},
 	{
 		"source": "pulse",
@@ -774,10 +762,10 @@
 			"46.75650431369247",
 			"23.596658706665036"
 		],
-		"pm10": 1,
-		"pm25": 0,
-		"temperature": 2,
-		"humidity": 17
+		"pm10": 8,
+		"pm25": 3,
+		"temperature": 12,
+		"humidity": 86
 	},
 	{
 		"source": "pulse",
@@ -789,10 +777,10 @@
 			"46.778748",
 			"23.581241"
 		],
-		"pm10": 1,
-		"pm25": 1,
-		"temperature": 2,
-		"humidity": 17
+		"pm10": 9,
+		"pm25": 6,
+		"temperature": 12,
+		"humidity": 89
 	},
 	{
 		"source": "pulse",
@@ -804,9 +792,9 @@
 			"46.75650431369247",
 			"23.596658706665036"
 		],
-		"pm10": 1,
-		"pm25": 0,
-		"temperature": 2,
-		"humidity": 17
+		"pm10": 7,
+		"pm25": 3,
+		"temperature": 12,
+		"humidity": 87
 	}
 ]

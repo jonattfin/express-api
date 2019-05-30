@@ -73,5 +73,20 @@
 		"pm25": 6,
 		"temperature": 18,
 		"humidity": 66
+	},
+	{
+		"source": "urad",
+		"city": "Brașov",
+		"country": "RO",
+		"time": "19",
+		"sensorId": "82000169",
+		"position": [
+			"45.64589300",
+			"25.59947100"
+		],
+		"pm10": 11,
+		"pm25": 11,
+		"temperature": 18,
+		"humidity": 48
 	}
 ]

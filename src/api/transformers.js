@@ -1,6 +1,8 @@
 import moment from 'moment';
 import _ from 'lodash';
 
+import allowedCities from './alowedCities';
+
 // const DATE_FORMAT = 'YYYY-MM-DD';
 const TYPES = ['pm10', 'pm25', 'temperature', 'humidity'];
 
@@ -21,7 +23,7 @@ export function transformUradDetailsData(sensors, data) {
 }
 
 function filterData(data) {
-  return data.filter(({ city, country }) => city === 'Cluj-Napoca' && country === 'RO');
+  return data.filter(({ city, country }) => allowedCities.includes(city) && country === 'RO');
 }
 
 function fromPulseFormat(item) {
@@ -122,14 +124,17 @@ function calculateAverage(data) {
 
       const obj = {};
       TYPES.forEach((type) => {
-        const values = sensorValues
-          .map(currentItem => currentItem[type] || 0);
+        const values = sensorValues.filter(currentItem => currentItem[type] >= 0)
+          .map(currentItem => currentItem[type]);
 
         if (values.length === 0) {
           return;
         }
 
-        obj[type] = Math.trunc(values.reduce((prev, current) => prev + current, 0) / values.length);
+        const sum = values.reduce((prev, current) => prev + current, 0);
+        const avg = Math.trunc(sum / values.length);
+
+        obj[type] = avg;
       });
 
       results.push({

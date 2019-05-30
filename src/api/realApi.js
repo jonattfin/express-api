@@ -2,6 +2,7 @@ import _ from 'lodash';
 import moment from 'moment';
 
 import { UradService, PulseService } from './serviceFactory';
+import allowedCities from './alowedCities';
 
 import { UradDataDay } from './data';
 import { transformUradData, transformPulseData, transformUradDetailsData } from './transformers';
@@ -27,7 +28,7 @@ export default class RealApi {
     const pulseData = await Promise.all(urls.map(url => PulseService.get(url)));
 
     // urad
-    const isCorrect = ({ status, city, timelast }) => status !== null && timelast !== null && city === 'Cluj-Napoca';
+    const isCorrect = ({ status, city, timelast }) => status !== null && timelast !== null && allowedCities.includes(city);
     const filteredUradSensors = UradDataDay.filter(isCorrect);
 
     const uradUrls = filteredUradSensors.map(({ id }) => buildUradUrl(id, numberOfDays));
