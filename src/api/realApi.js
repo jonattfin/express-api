@@ -1,16 +1,16 @@
 import _ from 'lodash';
 import moment from 'moment';
 
-import { UradService, PulseService } from './serviceFactory';
-import allowedCities from './alowedCities';
+import { PulseService } from './serviceFactory';
+// import allowedCities from './alowedCities';
 
-import { UradDataDay } from './data';
-import { transformUradData, transformPulseData, transformUradDetailsData } from './transformers';
+// import { UradDataDay } from './data';
+import { transformUradData, transformPulseData } from './transformers';
 
 export default class RealApi {
   static async getLastDay() {
     const data = await Promise.all([
-      UradService.get('devices'),
+      [],
       PulseService.get('data24h'),
     ]);
 
@@ -28,14 +28,14 @@ export default class RealApi {
     const pulseData = await Promise.all(urls.map(url => PulseService.get(url)));
 
     // urad
-    const isCorrect = ({ status, city, timelast }) => status !== null && timelast !== null && allowedCities.includes(city);
-    const filteredUradSensors = UradDataDay.filter(isCorrect);
+    // const isCorrect = ({ status, city, timelast }) => status !== null && timelast !== null && allowedCities.includes(city);
+    // const filteredUradSensors = UradDataDay.filter(isCorrect);
 
-    const uradUrls = filteredUradSensors.map(({ id }) => buildUradUrl(id, numberOfDays));
-    const uradData = await Promise.all(uradUrls.map(([url]) => UradService.get(url)));
+    // const uradUrls = filteredUradSensors.map(({ id }) => buildUradUrl(id, numberOfDays));
+    // const uradData = await Promise.all(uradUrls.map(([url]) => UradService.get(url)));
 
-    const results = transformUradDetailsData(filteredUradSensors, uradData);
-    return _.concat(results, applyTransformations({ transformers: [transformPulseData], data: [_.concat(...pulseData)] }));
+    // const results = transformUradDetailsData(filteredUradSensors, uradData);
+    return _.concat([], applyTransformations({ transformers: [transformPulseData], data: [_.concat(...pulseData)] }));
   }
 
   static async getLastMonth() {
@@ -44,10 +44,10 @@ export default class RealApi {
   }
 }
 
-function buildUradUrl(sensorId, numberOfDays) {
-  const fromDateTime = (moment() - moment().subtract(numberOfDays, 'day')) / 1000;
-  return [`devices/${sensorId}/all/${fromDateTime}`];
-}
+// function buildUradUrl(sensorId, numberOfDays) {
+//   const fromDateTime = (moment() - moment().subtract(numberOfDays, 'day')) / 1000;
+//   return [`devices/${sensorId}/all/${fromDateTime}`];
+// }
 
 function buildUrl(sensorId, numberOfDays) {
   const toFormat = (date) => {

@@ -43,18 +43,10 @@ class RestHelper {
 }
 
 function getInstance(type) {
-  let { url, headers = {} } = {};
+  let { url } = {};
+  const headers = {};
 
   switch (type) {
-    case 'urad': {
-      url = 'https://data.uradmonitor.com/api/v1/';
-      headers = {
-        'X-User-id': 'www',
-        'X-User-hash': 'global',
-        Origin: 'https://www.uradmonitor.com',
-      };
-      break;
-    }
     case 'pulse': {
       url = 'https://cluj-napoca.pulse.eco/rest';
       break;
@@ -69,8 +61,6 @@ function getInstance(type) {
     headers,
   });
 }
-
-export const UradService = new RestHelper(getInstance('urad'));
 
 const extraConfig = {
   auth: {
