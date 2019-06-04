@@ -1,20 +1,20 @@
 import _ from 'lodash';
 import moment from 'moment';
 
-import { PulseService } from './serviceFactory';
+import { CJPulseService, BVPulseService } from './serviceFactory';
 // import allowedCities from './alowedCities';
 
 // import { UradDataDay } from './data';
-import { transformUradData, transformPulseData } from './transformers';
+import { transformPulseData } from './transformers';
 
 export default class RealApi {
   static async getLastDay() {
     const data = await Promise.all([
-      [],
-      PulseService.get('data24h'),
+      BVPulseService.get('data24h'),
+      CJPulseService.get('data24h'),
     ]);
 
-    const transformers = [transformUradData, transformPulseData];
+    const transformers = getTransformers();
     return applyTransformations({ transformers, data });
   }
 
@@ -22,10 +22,8 @@ export default class RealApi {
     const numberOfDays = 7;
 
     // pulse
-    const sensors = await PulseService.get('sensor');
-    const urls = sensors.filter(s => s.status === 'active'.toUpperCase()).map(({ sensorId }) => buildUrl(sensorId, numberOfDays));
-
-    const pulseData = await Promise.all(urls.map(url => PulseService.get(url)));
+    const brasovData = await getPulseData(numberOfDays);
+    const clujData = await getPulseData(numberOfDays);
 
     // urad
     // const isCorrect = ({ status, city, timelast }) => status !== null && timelast !== null && allowedCities.includes(city);
@@ -35,13 +33,42 @@ export default class RealApi {
     // const uradData = await Promise.all(uradUrls.map(([url]) => UradService.get(url)));
 
     // const results = transformUradDetailsData(filteredUradSensors, uradData);
-    return _.concat([], applyTransformations({ transformers: [transformPulseData], data: [_.concat(...pulseData)] }));
+    const transformers = getTransformers();
+    return _.concat([], applyTransformations({
+      transformers,
+      data: [_.concat(...brasovData), _.concat(...clujData)],
+    }));
   }
 
   static async getLastMonth() {
     const data = [[], []];
     return applyTransformations({ data });
   }
+}
+
+function getTransformers() {
+  return [
+    { transformer: transformPulseData, city: 'Brasov' },
+    { transformer: transformPulseData, city: 'Cluj-Napoca' },
+  ];
+}
+
+async function getPulseData(numberOfDays) {
+  const services = [BVPulseService, CJPulseService];
+
+  const results = [];
+  for (let index = 0; index < services.length; index += 1) {
+    const service = services[index];
+
+    // eslint-disable-next-line no-await-in-loop
+    const sensors = await service.get('sensor');
+    const urls = sensors.filter(s => s.status === 'active'.toUpperCase()).map(({ sensorId }) => buildUrl(sensorId, numberOfDays));
+
+    // eslint-disable-next-line no-await-in-loop
+    const pulseData = await Promise.all(urls.map(url => service.get(url)));
+    results.push(pulseData);
+  }
+  return results;
 }
 
 // function buildUradUrl(sensorId, numberOfDays) {
@@ -65,7 +92,10 @@ function applyTransformations({ transformers = [], data = [] }) {
   for (let index = 0; index < data.length; index += 1) {
     const element = data[index];
     if (element !== null) {
-      results.push(...transformers[index](element));
+      const { transformer, city } = transformers[index];
+
+      const newData = transformer(element).map(item => ({ ...item, city }));
+      results.push(...newData);
     }
   }
   return results;

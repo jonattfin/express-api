@@ -1,7 +1,7 @@
 import moment from 'moment';
 import _ from 'lodash';
 
-import allowedCities from './alowedCities';
+// import allowedCities from './alowedCities';
 
 // const DATE_FORMAT = 'YYYY-MM-DD';
 const TYPES = ['pm10', 'pm25', 'temperature', 'humidity'];
@@ -23,7 +23,7 @@ export function transformUradDetailsData(sensors, data) {
 }
 
 function filterData(data) {
-  return data.filter(({ city, country }) => allowedCities.includes(city) && country === 'RO');
+  return data;
 }
 
 function fromPulseFormat(item) {
@@ -37,7 +37,6 @@ function fromPulseFormat(item) {
 
   return {
     source: 'pulse',
-    city: 'Cluj-Napoca',
     country: 'RO',
     time: formatDate(moment(stamp)),
     sensorId,

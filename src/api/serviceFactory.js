@@ -47,8 +47,12 @@ function getInstance(type) {
   const headers = {};
 
   switch (type) {
-    case 'pulse': {
+    case 'pulse-cj': {
       url = 'https://cluj-napoca.pulse.eco/rest';
+      break;
+    }
+    case 'pulse-bv': {
+      url = 'https://brasov.pulse.eco/rest';
       break;
     }
     default:
@@ -69,4 +73,5 @@ const extraConfig = {
   },
 };
 
-export const PulseService = new RestHelper(getInstance('pulse'), extraConfig);
+export const CJPulseService = new RestHelper(getInstance('pulse-cj'), extraConfig);
+export const BVPulseService = new RestHelper(getInstance('pulse-bv'), extraConfig);
