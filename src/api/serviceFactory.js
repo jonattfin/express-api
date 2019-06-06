@@ -55,6 +55,10 @@ function getInstance(type) {
       url = 'https://brasov.pulse.eco/rest';
       break;
     }
+    case 'tg-mures': {
+      url = 'https://targumures.pulse.eco/rest';
+      break;
+    }
     default:
       throw new Error(`The instance of type ${type} is not supported!`);
   }
@@ -75,3 +79,4 @@ const extraConfig = {
 
 export const CJPulseService = new RestHelper(getInstance('pulse-cj'), extraConfig);
 export const BVPulseService = new RestHelper(getInstance('pulse-bv'), extraConfig);
+export const MRPulseService = new RestHelper(getInstance('tg-mures'), extraConfig);

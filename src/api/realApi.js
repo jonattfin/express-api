@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import moment from 'moment';
 
-import { CJPulseService, BVPulseService } from './serviceFactory';
+import { CJPulseService, BVPulseService, MRPulseService } from './serviceFactory';
 // import allowedCities from './alowedCities';
 
 // import { UradDataDay } from './data';
@@ -12,6 +12,7 @@ export default class RealApi {
     const data = await Promise.all([
       BVPulseService.get('data24h'),
       CJPulseService.get('data24h'),
+      MRPulseService.get('data24h'),
     ]);
 
     const transformers = getTransformers();
@@ -22,8 +23,9 @@ export default class RealApi {
     const numberOfDays = 7;
 
     // pulse
-    const brasovData = await getPulseData(numberOfDays);
-    const clujData = await getPulseData(numberOfDays);
+    const brasovData = await getPulseData(numberOfDays, BVPulseService);
+    const clujData = await getPulseData(numberOfDays, CJPulseService);
+    const muresData = await getPulseData(numberOfDays, MRPulseService);
 
     // urad
     // const isCorrect = ({ status, city, timelast }) => status !== null && timelast !== null && allowedCities.includes(city);
@@ -36,39 +38,32 @@ export default class RealApi {
     const transformers = getTransformers();
     return _.concat([], applyTransformations({
       transformers,
-      data: [_.concat(...brasovData), _.concat(...clujData)],
+      data: [_.concat(...brasovData), _.concat(...clujData), _.concat(...muresData)],
     }));
   }
 
   static async getLastMonth() {
-    const data = [[], []];
-    return applyTransformations({ data });
+    const transformers = getTransformers();
+    const data = [[], [], []];
+    return applyTransformations({ transformers, data });
   }
 }
 
 function getTransformers() {
+  const transformer = transformPulseData;
+
   return [
-    { transformer: transformPulseData, city: 'Brasov' },
-    { transformer: transformPulseData, city: 'Cluj-Napoca' },
+    { transformer, city: 'Brasov' },
+    { transformer, city: 'Cluj-Napoca' },
+    { transformer, city: 'Targu-Mures' },
   ];
 }
 
-async function getPulseData(numberOfDays) {
-  const services = [BVPulseService, CJPulseService];
+async function getPulseData(numberOfDays, service) {
+  const sensors = await service.get('sensor');
+  const urls = sensors.filter(s => s.status === 'active'.toUpperCase()).map(({ sensorId }) => buildUrl(sensorId, numberOfDays));
 
-  const results = [];
-  for (let index = 0; index < services.length; index += 1) {
-    const service = services[index];
-
-    // eslint-disable-next-line no-await-in-loop
-    const sensors = await service.get('sensor');
-    const urls = sensors.filter(s => s.status === 'active'.toUpperCase()).map(({ sensorId }) => buildUrl(sensorId, numberOfDays));
-
-    // eslint-disable-next-line no-await-in-loop
-    const pulseData = await Promise.all(urls.map(url => service.get(url)));
-    results.push(pulseData);
-  }
-  return results;
+  return Promise.all(urls.map(url => service.get(url)));
 }
 
 // function buildUradUrl(sensorId, numberOfDays) {
