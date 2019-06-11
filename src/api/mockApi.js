@@ -1,12 +1,12 @@
 
-import { UradDataDay, PulseDataDay, PulseDataWeek } from './data';
+import { PulseDataDay, PulseDataWeek } from './data';
 import { withDelay } from './tools';
 import { transformUradData, transformPulseData } from './transformers';
 
 export default class MockApi {
   static async getLastDay() {
     const data = await Promise.all([
-      withDelay(UradDataDay),
+      withDelay([]),
       withDelay(PulseDataDay),
     ]);
 
@@ -14,7 +14,7 @@ export default class MockApi {
   }
 
   static async getLastWeek() {
-    const data = [UradDataDay, PulseDataWeek];
+    const data = [[], PulseDataWeek];
     return applyTransformations(data);
   }
 

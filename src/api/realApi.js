@@ -23,9 +23,11 @@ export default class RealApi {
     const numberOfDays = 7;
 
     // pulse
-    const brasovData = await getPulseData(numberOfDays, BVPulseService);
-    const clujData = await getPulseData(numberOfDays, CJPulseService);
-    const muresData = await getPulseData(numberOfDays, MRPulseService);
+    const data = await Promise.all([
+      getPulseData(numberOfDays, BVPulseService),
+      getPulseData(numberOfDays, CJPulseService),
+      getPulseData(numberOfDays, MRPulseService),
+    ]);
 
     // urad
     // const isCorrect = ({ status, city, timelast }) => status !== null && timelast !== null && allowedCities.includes(city);
@@ -38,7 +40,7 @@ export default class RealApi {
     const transformers = getTransformers();
     return _.concat([], applyTransformations({
       transformers,
-      data: [_.concat(...brasovData), _.concat(...clujData), _.concat(...muresData)],
+      data: [_.concat(...data[0]), _.concat(...data[1]), _.concat(...data[2])],
     }));
   }
 
@@ -61,7 +63,7 @@ function getTransformers() {
 
 async function getPulseData(numberOfDays, service) {
   const sensors = await service.get('sensor');
-  const urls = sensors.filter(s => s.status === 'active'.toUpperCase()).map(({ sensorId }) => buildUrl(sensorId, numberOfDays));
+  const urls = sensors.map(({ sensorId }) => buildUrl(sensorId, numberOfDays));
 
   return Promise.all(urls.map(url => service.get(url)));
 }
