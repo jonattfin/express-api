@@ -4,7 +4,7 @@ import _ from 'lodash';
 // import allowedCities from './alowedCities';
 
 // const DATE_FORMAT = 'YYYY-MM-DD';
-const TYPES = ['pm10', 'pm25', 'temperature', 'humidity'];
+const TYPES = ['pm10', 'pm25', 'temperature', 'humidity', 'noise'];
 
 export function transformUradData(data) {
   const mapped = data.filter(({ status }) => status !== null)
