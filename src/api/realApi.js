@@ -1,7 +1,12 @@
 import _ from 'lodash';
 import moment from 'moment';
 
-import { CJPulseService, BVPulseService, MRPulseService } from './serviceFactory';
+import {
+  CJPulseService,
+  BVPulseService,
+  CDPulseService,
+  MRPulseService,
+} from './serviceFactory';
 // import allowedCities from './alowedCities';
 
 // import { UradDataDay } from './data';
@@ -12,6 +17,7 @@ export default class RealApi {
     const data = await Promise.all([
       BVPulseService.get('data24h'),
       CJPulseService.get('data24h'),
+      CDPulseService.get('data24h'),
       MRPulseService.get('data24h'),
     ]);
 
@@ -26,6 +32,7 @@ export default class RealApi {
     const data = await Promise.all([
       getPulseData(numberOfDays, BVPulseService),
       getPulseData(numberOfDays, CJPulseService),
+      getPulseData(numberOfDays, CDPulseService),
       getPulseData(numberOfDays, MRPulseService),
     ]);
 
@@ -49,6 +56,17 @@ export default class RealApi {
     const data = [[], [], []];
     return applyTransformations({ transformers, data });
   }
+
+  static async getSensors() {
+    const data = await Promise.all([
+      BVPulseService.get('sensor'),
+      CJPulseService.get('sensor'),
+      CDPulseService.get('sensor'),
+      MRPulseService.get('sensor'),
+    ]);
+
+    return data;
+  }
 }
 
 function getTransformers() {
@@ -57,6 +75,7 @@ function getTransformers() {
   return [
     { transformer, city: 'Brasov' },
     { transformer, city: 'Cluj-Napoca' },
+    { transformer, city: 'Codlea' },
     { transformer, city: 'Targu-Mures' },
   ];
 }

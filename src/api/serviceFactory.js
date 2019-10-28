@@ -21,8 +21,12 @@ class RestHelper {
   }
 
   async get(url, config = {}) {
-    const response = await this.instance.get(url, setConfig({ ...config, ...this.extraConfig }));
-    return response.data;
+    try {
+      const response = await this.instance.get(url, setConfig({ ...config, ...this.extraConfig }));
+      return response.data;
+    } catch (ex) {
+      return [];
+    }
   }
 
   //   async put(url, params, config = {}) {
@@ -55,8 +59,12 @@ function getInstance(type) {
       url = 'https://brasov.pulse.eco/rest';
       break;
     }
-    case 'tg-mures': {
+    case 'pulse-tg-mures': {
       url = 'https://targumures.pulse.eco/rest';
+      break;
+    }
+    case 'pulse-codlea': {
+      url = 'https://codlea.pulse.eco/rest';
       break;
     }
     default:
@@ -79,4 +87,5 @@ const extraConfig = {
 
 export const CJPulseService = new RestHelper(getInstance('pulse-cj'), extraConfig);
 export const BVPulseService = new RestHelper(getInstance('pulse-bv'), extraConfig);
-export const MRPulseService = new RestHelper(getInstance('tg-mures'), extraConfig);
+export const MRPulseService = new RestHelper(getInstance('pulse-tg-mures'), extraConfig);
+export const CDPulseService = new RestHelper(getInstance('pulse-codlea'), extraConfig);
